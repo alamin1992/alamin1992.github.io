@@ -4,6 +4,17 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Alamin Abu Zaman — Portfolio</title>
+  <meta
+  name="description"
+  content="Alamin Abu Zaman - 2nd Line Support Engineer & QA Specialist"
+/>
+
+<meta
+  name="keywords"
+  content="2nd Line Support, QA Engineer, Vimond, Jira, Zendesk, HubSpot."
+/>
+
+<meta name="author" content="Alamin Abu Zaman" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
@@ -16,7 +27,15 @@
     body{font-family:"Space Grotesk",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
     #root{min-height:100vh}
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-8px)}}
+    @keyframes float {
+  0%,100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
     nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(13,15,20,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:62px}
     .logo{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:"Syne",sans-serif;font-weight:800;font-size:13px;color:#fff;cursor:pointer}
     .nav-links{display:flex;gap:2.2rem;list-style:none}
@@ -26,7 +45,7 @@
     .nav-links button.active::after,.nav-links button:hover::after{transform:scaleX(1)}
     section{min-height:100vh;padding:100px 2.5rem 60px;display:flex;flex-direction:column;align-items:center;justify-content:center}
     #home{text-align:center;gap:1.6rem;animation:fadeUp .9s ease both}
-    .avatar-ring{width:190px;height:190px;border-radius:50%;margin:0 auto;background:linear-gradient(135deg,var(--accent),var(--accent2));padding:3px;animation:float 4s ease-in-out infinite}
+    .avatar-ring{width:190px;height:190px;border-radius:50%;margin:0 auto;box-shadow: 0 10px 40px rgba(79,142,247,0.25);background:linear-gradient(135deg,var(--accent),var(--accent2));padding:3px;animation:float 4s ease-in-out infinite}
     .avatar-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--bg3)}
     .avatar-inner img{width:100%;height:100%;object-fit:cover}
     .hero-name{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(2.4rem,6vw,4rem);background:linear-gradient(135deg,var(--accent) 30%,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
