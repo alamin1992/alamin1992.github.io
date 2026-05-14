@@ -19,10 +19,7 @@
     body{font-family:"Space Grotesk",sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
     #root{min-height:100vh}
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes float {
-      0%,100% {transform: translateY(0px);}
-      50% {transform: translateY(-12px);}
-    }
+    @keyframes float {0%,100%{transform:translateY(0px)}50%{transform:translateY(-12px)}}
     nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(13,15,20,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:60px}
     .logo{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:"Syne",sans-serif;font-weight:700;color:#fff;cursor:pointer;font-size:0.9rem}
     .nav-links{display:flex;gap:2.2rem;list-style:none}
@@ -32,7 +29,9 @@
     .nav-links button.active::after,.nav-links button:hover::after{transform:scaleX(1)}
     section{min-height:100vh;padding:100px 2.5rem 60px;display:flex;flex-direction:column;align-items:center;justify-content:center}
     #home{text-align:center;gap:1.6rem;animation:fadeUp .9s ease both}
-    .avatar-ring{width:190px;height:190px;border-radius:50%;margin:0 auto;box-shadow: 0 10px 40px rgba(79,142,247,0.25);background:linear-gradient(135deg,var(--accent),var(--accent2));padding:3px;animation:float 3s ease-in-out infinite}
+    #about{align-items:center}
+    #activities{margin-top:5rem}
+    .avatar-ring{width:190px;height:190px;border-radius:50%;margin:0 auto;box-shadow:0 10px 40px rgba(79,142,247,0.25);background:linear-gradient(135deg,var(--accent),var(--accent2));padding:3px;animation:float 3s ease-in-out infinite}
     .avatar-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--bg3)}
     .avatar-inner img{width:100%;height:100%;object-fit:cover}
     .hero-name{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(2.4rem,6vw,4rem);background:linear-gradient(135deg,var(--accent) 30%,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -44,18 +43,17 @@
     .social-row{display:flex;gap:1rem;justify-content:center;margin-top:.4rem}
     .social-btn{width:46px;height:46px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;transition:all .2s}
     .social-btn:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent;transform:translateY(-2px)}
-    .sec-title{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3rem);background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    #about,#activities{max-width:960px;margin:0 auto;align-items:flex-start;width:100%}
+    .sec-title{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3rem);background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:2rem}
     .about-bio{color:var(--muted);line-height:1.85;font-size:1rem;max-width:780px;margin:0 auto 3rem;text-align:center;width:100%}
-    .info-section-title,.skills-section-title{font-family:"Syne",sans-serif;font-weight:700;font-size:1.4rem;color:var(--accent);margin-bottom:1.2rem;width:100%}
+    .info-section-title,.skills-section-title{font-family:"Syne",sans-serif;font-weight:700;font-size:1.4rem;color:var(--accent);margin-bottom:1.2rem;width:100%;text-align:center}
     .skills-section-title{font-size:1.3rem;margin:2rem 0 1.2rem}
-    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;width:100%}
+    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;width:100%;max-width:900px;margin:0 auto}
     .info-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.2rem 1.4rem;display:flex;align-items:center;gap:1rem;transition:all .25s}
     .info-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px var(--glow)}
     .info-icon{width:42px;height:42px;border-radius:12px;background:rgba(79,142,247,.12);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:1.1rem;flex-shrink:0}
     .info-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
     .info-value{font-size:.95rem;font-weight:600;color:var(--text)}
-    .exp-block{width:100%;margin-bottom:2.5rem}
+    .exp-block{width:100%;max-width:900px;margin:0 auto 2.5rem}
     .exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem}
     .exp-company{font-family:"Syne",sans-serif;font-weight:700;font-size:1.05rem;color:var(--text)}
     .exp-role{color:var(--accent);font-weight:600;font-size:.95rem;margin-bottom:.8rem}
@@ -63,11 +61,11 @@
     .exp-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
     .exp-list li{display:flex;align-items:flex-start;gap:.7rem;color:var(--muted);font-size:.92rem;line-height:1.6}
     .exp-list li::before{content:"\25B8";color:var(--accent);flex-shrink:0;margin-top:2px}
-    .exp-divider{border:none;border-top:1px solid var(--border);margin-bottom:2.5rem}
-    .skills-grid{display:flex;flex-wrap:wrap;gap:.6rem;width:100%;margin-bottom:1.5rem}
+    .exp-divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
+    .skills-grid{display:flex;flex-wrap:wrap;gap:.6rem;width:100%;max-width:900px;margin:0 auto 1.5rem;justify-content:center}
     .skill-tag{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.45rem 1rem;font-size:.85rem;color:var(--muted);transition:all .2s;cursor:default}
     .skill-tag:hover{border-color:var(--accent);color:var(--text);background:rgba(79,142,247,.08)}
-    .edu-card{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.4rem 1.6rem;margin-bottom:1rem;display:flex;align-items:center;gap:1.2rem;transition:all .2s}
+    .edu-card{width:100%;max-width:900px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.4rem 1.6rem;margin:0 auto 1rem;display:flex;align-items:center;gap:1.2rem;transition:all .2s}
     .edu-card:hover{border-color:var(--accent2)}
     .edu-icon{width:44px;height:44px;border-radius:12px;background:rgba(123,94,167,.15);display:flex;align-items:center;justify-content:center;color:var(--accent2);font-size:1.2rem;flex-shrink:0}
     .edu-degree{font-weight:600;color:var(--text);font-size:.96rem;margin-bottom:2px}
@@ -212,7 +210,7 @@ function App() {
 
       <section id="about">
         <h2 className="sec-title">About Me</h2>
-        <p className="about-bio">Experienced 2nd Line Support Engineer and QA Specialist with over 8 years of experience supporting international clients and streaming platforms. Expert in incident management, root cause analysis, and ensuring customer satisfaction through efficient problem resolution. Dedicated to continuous improvement and technical excellence in fast-paced environments.</p>
+        <p className="about-bio">Experienced 2nd Line Support Engineer and QA Specialist with over 8 years of experience supporting international clients and streaming platforms. Expert in incident management, root cause analysis, and ensuring customer satisfaction through efficient problem resolution. Dedicated to continuous improvement and technical excellence.</p>
         <div className="info-section-title">Basic Info</div>
         <div className="info-grid">
           {[
