@@ -20,12 +20,8 @@
     #root{min-height:100vh}
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
     @keyframes float {
-      0%,100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-12px);
-      }
+      0%,100% {transform: translateY(0px);}
+      50% {transform: translateY(-12px);}
     }
     nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(13,15,20,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:60px}
     .logo{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:"Syne",sans-serif;font-weight:700;color:#fff;cursor:pointer;font-size:0.9rem}
@@ -49,7 +45,7 @@
     .social-btn{width:46px;height:46px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;transition:all .2s}
     .social-btn:hover{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent;transform:translateY(-2px)}
     .sec-title{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3rem);background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    #about,#activities{max-width:960px;margin:0 auto;align-items:flex-start}
+    #about,#activities{max-width:960px;margin:0 auto;align-items:flex-start;width:100%}
     .about-bio{color:var(--muted);line-height:1.85;font-size:1rem;max-width:780px;margin:0 auto 3rem;text-align:center;width:100%}
     .info-section-title,.skills-section-title{font-family:"Syne",sans-serif;font-weight:700;font-size:1.4rem;color:var(--accent);margin-bottom:1.2rem;width:100%}
     .skills-section-title{font-size:1.3rem;margin:2rem 0 1.2rem}
@@ -86,7 +82,7 @@
     .form-input::placeholder,.form-textarea::placeholder{color:var(--muted)}
     .form-input:focus,.form-textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow);outline:none}
     .form-textarea{resize:vertical;min-height:140px}
-    .submit-btn{width:100%;padding:.95rem;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:12px;color:#fff;font-family:"Syne",sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.3s;margin-top:0.5rem}
+    .submit-btn{width:100%;padding:.95rem;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:12px;color:#fff;font-family:"Syne",sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.3s}
     .submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--glow)}
     .submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none}
     .success-message{color:#4ade80;font-size:0.9rem;text-align:center;margin-top:1rem;display:none}
@@ -98,152 +94,300 @@
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const{useState,useEffect}=React;
-const PHOTO="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAA/ahbpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARY3BydAAABTgAAAA0AAAANAAAAO3dmZXAAAAHYAQAABLRkZXNjAAABxAAAAFZkc2NzcAAAAdwAAAG/Z3RyYwAACDgAAAG/Z2JUUgAACJAAAAGPZ3hZWgAACKQAAAAUbWx1YwAACLgAAAAMbm1vZAAAANAAAAAcb3JlbgAAAOgAAABbcktwdAAAA9QAAAHrcHRyYQAABQAAAANDdHJjAAAB6AAAAA1n58AqAAEAAAQIAACKzQH/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAA/ahbpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARY3BydAAABTgAAAA0AAAANAAAAO3dmZXAAAAHYAQAABLRkZXNjAAABxAAAAFZkc2NzcAAAAdwAAAG/Z3RyYwAACDgAAAG/Z2JUUgAACJAAAAGPZ3hZWgAACKQAAAAUbWx1YwAACLgAAAAMbm1vZAAAANAAAAAcb3JlbgAAAOgAAABbcktwdAAAA9QAAAHrcHRyYQAABQAAAADDdHJjAAAB6AAAAA1n48AqAAEAAAQIAACKzQH/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAA/ahbpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARY3BydAAABTgAAAA0AAAANAAAAO3dmZXAAAAHYAQAABLRkZXNjAAABxAAAAFZkc2NzcAAAAdwAAAG/Z3RyYwAACDgAAAG/Z2JUUgAACJAAAAGPZ3hZWgAACKQAAAAUbWx1YwAACLgAAAAMbm1vZAAAANAAAAAcb3JlbgAAAOgAAABbcktwdAAAA9QAAAHrcHRyYQAABQAAAANDdHJjAAAB6AAAAA1n58AqAAEAAAQIAACKzQH/";
-const NAV_ITEMS=["home","about","activities","contact"];
-function App(){
-  const[active,setActive]=useState("home");
-  const[form,setForm]=useState({name:"",email:"",message:""});
-  const[loading,setLoading]=useState(false);
-  const[message,setMessage]=useState({type:"",text:""});
+const {useState, useEffect} = React;
+const PHOTO = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAA/ahbpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARY3BydAAABTgAAAA0AAAANAAAAO3dmZXAAAAHYAQAABLRkZXNjAAABxAAAAFZkc2NzcAAAAdwAAAG/Z3RyYwAACDgAAAG/Z2JUUgAACJAAAAGPZ3hZWgAACKQAAAAUbWx1YwAACLgAAAAMbm1vZAAAANAAAAAcb3JlbgAAAOgAAABbcktwdAAAA9QAAAHrcHRyYQAABQAAAANDdHJjAAAB6AAAAA1n58AqAAEAAAQIAACKzQH/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAA/ahbpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARY3BydAAABTgAAAA0AAAANAAAAO3dmZXAAAAHYAQAABLRkZXNjAAABxAAAAFZkc2NzcAAAAdwAAAG/Z3RyYwAACDgAAAG/Z2JUUgAACJAAAAGPZ3hZWgAACKQAAAAUbWx1YwAACLgAAAAMbm1vZAAAANAAAAAcb3JlbgAAAOgAAABbcktwdAAAA9QAAAHrcHRyYQAABQAAAADDdHJjAAAB6AAAAA1n48AqAAEAAAQIAACKzQH/";
+const NAV_ITEMS = ["home", "about", "activities", "contact"];
 
-  const scrollTo=(id)=>{document.getElementById(id)?.scrollIntoView({behavior:"smooth"});setActive(id)};
+function App() {
+  const [active, setActive] = useState("home");
+  const [form, setForm] = useState({name: "", email: "", message: ""});
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState({type: "", text: ""});
+
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({behavior: "smooth"});
+    setActive(id);
+  };
   
-  useEffect(()=>{
-    const h=()=>{NAV_ITEMS.forEach(id=>{const el=document.getElementById(id);if(el){const r=el.getBoundingClientRect();if(r.top<=80&&r.bottom>80)setActive(id)}})};
-    window.addEventListener("scroll",h);return()=>window.removeEventListener("scroll",h);
-  },[]);
+  useEffect(() => {
+    const handleScroll = () => {
+      NAV_ITEMS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const r = el.getBoundingClientRect();
+          if (r.top <= 80 && r.bottom > 80) setActive(id);
+        }
+      });
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const handleInputChange=(e)=>{
-    const{name,value}=e.target;
-    setForm(prev=>({...prev,[name]:value}));
+  const handleInputChange = (e) => {
+    const {name, value} = e.target;
+    setForm(prev => ({...prev, [name]: value}));
   };
 
-  const handleSubmit=async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if(!form.name||!form.email||!form.message){
-      setMessage({type:"error",text:"Please fill all fields"});
+    if (!form.name || !form.email || !form.message) {
+      setMessage({type: "error", text: "Please fill all fields"});
       return;
     }
 
     setLoading(true);
-    setMessage({type:"",text:""});
+    setMessage({type: "", text: ""});
 
-    try{
-      const response=await fetch("https://formspree.io/f/xgodbddk",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({name:form.name,email:form.email,message:form.message})
+    try {
+      const response = await fetch("https://formspree.io/f/xgodbddk", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({name: form.name, email: form.email, message: form.message})
       });
 
-      if(response.ok){
-        setMessage({type:"success",text:"Message sent successfully! Thank you for reaching out."});
-        setForm({name:"",email:"",message:""});
-      }else{
-        setMessage({type:"error",text:"Failed to send message. Please try again."});
+      if (response.ok) {
+        setMessage({type: "success", text: "Message sent successfully! Thank you for reaching out."});
+        setForm({name: "", email: "", message: ""});
+      } else {
+        setMessage({type: "error", text: "Failed to send message. Please try again."});
       }
-    }catch(err){
-      setMessage({type:"error",text:"Error sending message. Please try again."});
-    }finally{
+    } catch (err) {
+      setMessage({type: "error", text: "Error sending message. Please try again."});
+    } finally {
       setLoading(false);
     }
   };
 
-  return React.createElement(React.Fragment,null,
-    React.createElement("nav",null,
-      React.createElement("div",{className:"logo",onClick:()=>scrollTo("home")},"AA"),
-      React.createElement("ul",{className:"nav-links"},NAV_ITEMS.map(id=>
-        React.createElement("li",{key:id},React.createElement("button",{className:active===id?"active":"",onClick:()=>scrollTo(id)},id.charAt(0).toUpperCase()+id.slice(1)))
-      )),
-      React.createElement("i",{className:"fa fa-gear",style:{color:"var(--muted)",fontSize:"1.1rem",cursor:"pointer"}})
-    ),
-    React.createElement("section",{id:"home"},
-      React.createElement("div",{className:"avatar-ring"},React.createElement("div",{className:"avatar-inner"},React.createElement("img",{src:PHOTO,alt:"Alamin"}))),
-      React.createElement("h1",{className:"hero-name"},"Alamin Abu Zaman"),
-      React.createElement("p",{className:"hero-title"},"2nd Line Support Engineer • QA Specialist • Streaming Platform Support"),
-      React.createElement("div",{className:"hero-contact"},
-        React.createElement("a",{className:"contact-chip",href:"tel:+8801919861161"},React.createElement("i",{className:"fa fa-phone"})," +8801919861161"),
-        React.createElement("a",{className:"contact-chip",href:"mailto:alaminabuzaman@gmail.com"},React.createElement("i",{className:"fa fa-envelope"})," alaminabuzaman@gmail.com"),
-        React.createElement("a",{className:"contact-chip",href:"https://linkedin.com/in/alamin-abu-zaman-52708785",target:"_blank"},React.createElement("i",{className:"fab fa-linkedin"})," LinkedIn"),
-        React.createElement("span",{className:"contact-chip"},React.createElement("i",{className:"fa fa-location-dot"})," Dhaka, Bangladesh (Open to Remote)")
-      ),
-      React.createElement("div",{className:"social-row"},
-        React.createElement("a",{className:"social-btn",href:"https://linkedin.com/in/alamin-abu-zaman-52708785",target:"_blank"},React.createElement("i",{className:"fab fa-linkedin-in"})),
-        React.createElement("a",{className:"social-btn",href:"https://github.com/alamin1992"},React.createElement("i",{className:"fab fa-github"})),
-        React.createElement("a",{className:"social-btn",href:"mailto:alaminabuzaman@gmail.com"},React.createElement("i",{className:"fa fa-envelope"}))
-      )
-    ),
-    React.createElement("section",{id:"about"},
-      React.createElement("h2",{className:"sec-title"},"About Me"),
-      React.createElement("p",{className:"about-bio"},"Experienced 2nd Line Support Engineer and QA Specialist with over 8 years of experience supporting international clients and streaming platforms. Expert in incident management, root cause analysis, and ensuring customer satisfaction through efficient problem resolution."),
-      React.createElement("div",{className:"info-section-title"},"Basic Info"),
-      React.createElement("div",{className:"info-grid"},
-        [["fa-calendar","Birthdate","December 30, 1992"],["fa-hourglass-half","Age","34 Years Old"],["fa-user","Gender","Male"],["fa-flag","Nationality","Bangladeshi"],["fa-location-dot","City","Dhaka"],["fa-briefcase","Experience","8+ Years"]].map(([icon,label,value])=>
-          React.createElement("div",{className:"info-card",key:label},
-            React.createElement("div",{className:"info-icon"},React.createElement("i",{className:`fa ${icon}`})),
-            React.createElement("div",null,React.createElement("div",{className:"info-label"},label),React.createElement("div",{className:"info-value"},value))
-          )
-        )
-      )
-    ),
-    React.createElement("section",{id:"activities"},
-      React.createElement("h2",{className:"sec-title"},"Experience & Skills"),
-      React.createElement("div",{className:"exp-block"},
-        React.createElement("div",{className:"exp-header"},React.createElement("span",{className:"exp-company"},"Craftsmen Ltd. (Client: Vimond)"),React.createElement("span",{className:"exp-period"},"Jan 2021 - Present")),
-        React.createElement("div",{className:"exp-role"},"L2 Support & QA Engineer"),
-        React.createElement("ul",{className:"exp-list"},
-          ["Resolved 1000+ SaaS support tickets with 95% client satisfaction","Automated regression testing (BugBug + manual) ensuring 99% release stability","Collaborated with engineering teams across timezones to resolve complex issues"].map(t=>React.createElement("li",{key:t},t))
-        )
-      ),
-      React.createElement("hr",{className:"exp-divider"}),
-      React.createElement("div",{className:"exp-block"},
-        React.createElement("div",{className:"exp-header"},React.createElement("span",{className:"exp-company"},"Maasranga Television"),React.createElement("span",{className:"exp-period"},"May 2019 - Dec 2020")),
-        React.createElement("div",{className:"exp-role"},"IT Support Engineer"),
-        React.createElement("ul",{className:"exp-list"},
-          ["Oversaw IT infrastructure and ensured uptime and system security","Delivered end-user training and technical support to staff"].map(t=>React.createElement("li",{key:t},t))
-        )
-      ),
-      React.createElement("hr",{className:"exp-divider"}),
-      React.createElement("div",{className:"exp-block"},
-        React.createElement("div",{className:"exp-header"},React.createElement("span",{className:"exp-company"},"DBC News"),React.createElement("span",{className:"exp-period"},"May 2016 - April 2019")),
-        React.createElement("div",{className:"exp-role"},"Technical Support Specialist"),
-        React.createElement("ul",{className:"exp-list"},
-          ["Provided technical support via phone, chat, and onsite channels","Diagnosed and resolved hardware and software issues efficiently"].map(t=>React.createElement("li",{key:t},t))
-        )
-      ),
-      React.createElement("div",{className:"skills-section-title"},"Technical Skills"),
-      React.createElement("div",{className:"skills-grid"},["SaaS Support","Incident Management","Root Cause Analysis","QA Testing","Regression Testing","Bug Tracking","Release Validation","Zendesk","Jira","HubSpot","BugBug","JIRA","Slack","Remote Collaboration"].map(s=>React.createElement("span",{className:"skill-tag",key:s},s))),
-      React.createElement("div",{className:"skills-section-title"},"Education"),
-      [["MSc in Computer Science & Engineering","Jahangirnagar University","2018"],["BSc in Computer Science & Engineering","World University of Bangladesh","2015"]].map(([d,s,y])=>
-        React.createElement("div",{className:"edu-card",key:d},
-          React.createElement("div",{className:"edu-icon"},React.createElement("i",{className:"fa fa-graduation-cap"})),
-          React.createElement("div",null,React.createElement("div",{className:"edu-degree"},d),React.createElement("div",{className:"edu-school"},s)),
-          React.createElement("div",{className:"edu-year"},y)
-        )
-      ),
-      React.createElement("div",{className:"skills-section-title"},"Certifications"),
-      [["CCNA - Routing & Switching","fa-network-wired"],["Server Administration & Cloud Management - BITM","fa-cloud"]].map(([c,icon])=>
-        React.createElement("div",{className:"edu-card",key:c},
-          React.createElement("div",{className:"edu-icon"},React.createElement("i",{className:`fa ${icon}`})),
-          React.createElement("div",null,React.createElement("div",{className:"edu-degree"},c))
-        )
-      )
-    ),
-    React.createElement("section",{id:"contact"},
-      React.createElement("h2",{className:"sec-title"},"Get In Touch"),
-      React.createElement("p",{className:"contact-sub"},"Feel free to reach out for collaborations, opportunities, or just to say hello!"),
-      React.createElement("form",{className:"contact-form",onSubmit:handleSubmit},
-        React.createElement("div",null,React.createElement("div",{className:"form-label"},React.createElement("i",{className:"fa fa-user"}),"Your Name"),React.createElement("input",{className:"form-input",type:"text",name:"name",placeholder:"Enter your name",value:form.name,onChange:handleInputChange,required:true})),
-        React.createElement("div",null,React.createElement("div",{className:"form-label"},React.createElement("i",{className:"fa fa-envelope"}),"Email Address"),React.createElement("input",{className:"form-input",type:"email",name:"email",placeholder:"Enter your email",value:form.email,onChange:handleInputChange,required:true})),
-        React.createElement("div",null,React.createElement("div",{className:"form-label"},React.createElement("i",{className:"fa fa-comment"}),"Your Message"),React.createElement("textarea",{className:"form-textarea",name:"message",placeholder:"Write your message here...",value:form.message,onChange:handleInputChange,required:true})),
-        React.createElement("button",{className:"submit-btn",type:"submit",disabled:loading},loading?"Sending...":"Send Message"),
-        message.text&&React.createElement("div",{className:message.type==="success"?"success-message":"error-message",style:{display:"block"}},message.text)
-      )
-    )
+  return (
+    <React.Fragment>
+      <nav>
+        <div className="logo" onClick={() => scrollTo("home")}>AA</div>
+        <ul className="nav-links">
+          {NAV_ITEMS.map(id => (
+            <li key={id}>
+              <button className={active === id ? "active" : ""} onClick={() => scrollTo(id)}>
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </button>
+            </li>
+          ))}
+        </ul>
+        <i className="fa fa-gear" style={{color: "var(--muted)", fontSize: "1.1rem", cursor: "pointer"}}></i>
+      </nav>
+
+      <section id="home">
+        <div className="avatar-ring">
+          <div className="avatar-inner">
+            <img src={PHOTO} alt="Alamin"/>
+          </div>
+        </div>
+        <h1 className="hero-name">Alamin Abu Zaman</h1>
+        <p className="hero-title">2nd Line Support Engineer • QA Specialist • Streaming Platform Support</p>
+        <div className="hero-contact">
+          <a className="contact-chip" href="tel:+8801919861161">
+            <i className="fa fa-phone"></i> +8801919861161
+          </a>
+          <a className="contact-chip" href="mailto:alaminabuzaman@gmail.com">
+            <i className="fa fa-envelope"></i> alaminabuzaman@gmail.com
+          </a>
+          <a className="contact-chip" href="https://linkedin.com/in/alamin-abu-zaman-52708785" target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <span className="contact-chip">
+            <i className="fa fa-location-dot"></i> Dhaka, Bangladesh (Open to Remote)
+          </span>
+        </div>
+        <div className="social-row">
+          <a className="social-btn" href="https://linkedin.com/in/alamin-abu-zaman-52708785" target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-linkedin-in"></i>
+          </a>
+          <a className="social-btn" href="https://github.com/alamin1992" target="_blank" rel="noopener noreferrer">
+            <i className="fab fa-github"></i>
+          </a>
+          <a className="social-btn" href="mailto:alaminabuzaman@gmail.com">
+            <i className="fa fa-envelope"></i>
+          </a>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2 className="sec-title">About Me</h2>
+        <p className="about-bio">Experienced 2nd Line Support Engineer and QA Specialist with over 8 years of experience supporting international clients and streaming platforms. Expert in incident management, root cause analysis, and ensuring customer satisfaction through efficient problem resolution. Dedicated to continuous improvement and technical excellence in fast-paced environments.</p>
+        <div className="info-section-title">Basic Info</div>
+        <div className="info-grid">
+          {[
+            ["fa-calendar", "Birthdate", "December 30, 1992"],
+            ["fa-hourglass-half", "Age", "34 Years Old"],
+            ["fa-user", "Gender", "Male"],
+            ["fa-flag", "Nationality", "Bangladeshi"],
+            ["fa-location-dot", "City", "Dhaka"],
+            ["fa-briefcase", "Experience", "8+ Years"]
+          ].map(([icon, label, value]) => (
+            <div className="info-card" key={label}>
+              <div className="info-icon">
+                <i className={`fa ${icon}`}></i>
+              </div>
+              <div>
+                <div className="info-label">{label}</div>
+                <div className="info-value">{value}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="activities">
+        <h2 className="sec-title">Experience & Skills</h2>
+        <div className="exp-block">
+          <div className="exp-header">
+            <span className="exp-company">Craftsmen Ltd. (Client: Vimond)</span>
+            <span className="exp-period">Jan 2021 - Present</span>
+          </div>
+          <div className="exp-role">L2 Support & QA Engineer</div>
+          <ul className="exp-list">
+            {[
+              "Resolved 1000+ SaaS support tickets with 95% client satisfaction",
+              "Automated regression testing (BugBug + manual) ensuring 99% release stability",
+              "Collaborated with engineering teams across timezones to resolve complex issues",
+              "Conducted root cause analysis and implemented preventive measures"
+            ].map(text => <li key={text}>{text}</li>)}
+          </ul>
+        </div>
+        <hr className="exp-divider"/>
+
+        <div className="exp-block">
+          <div className="exp-header">
+            <span className="exp-company">Maasranga Television</span>
+            <span className="exp-period">May 2019 - Dec 2020</span>
+          </div>
+          <div className="exp-role">IT Support Engineer</div>
+          <ul className="exp-list">
+            {[
+              "Oversaw IT infrastructure and ensured uptime and system security",
+              "Delivered end-user training and technical support to staff",
+              "Managed network configurations and system maintenance"
+            ].map(text => <li key={text}>{text}</li>)}
+          </ul>
+        </div>
+        <hr className="exp-divider"/>
+
+        <div className="exp-block">
+          <div className="exp-header">
+            <span className="exp-company">DBC News</span>
+            <span className="exp-period">May 2016 - April 2019</span>
+          </div>
+          <div className="exp-role">Technical Support Specialist</div>
+          <ul className="exp-list">
+            {[
+              "Provided technical support via phone, chat, and onsite channels",
+              "Diagnosed and resolved hardware and software issues efficiently",
+              "Documented issues and solutions for knowledge base"
+            ].map(text => <li key={text}>{text}</li>)}
+          </ul>
+        </div>
+
+        <div className="skills-section-title">Technical Skills</div>
+        <div className="skills-grid">
+          {[
+            "SaaS Support", "Incident Management", "Root Cause Analysis", "QA Testing",
+            "Regression Testing", "Bug Tracking", "Release Validation", "Zendesk", "Jira",
+            "HubSpot", "BugBug", "JIRA", "Slack", "Remote Collaboration"
+          ].map(skill => <span className="skill-tag" key={skill}>{skill}</span>)}
+        </div>
+
+        <div className="skills-section-title">Education</div>
+        {[
+          ["MSc in Computer Science & Engineering", "Jahangirnagar University", "2018"],
+          ["BSc in Computer Science & Engineering", "World University of Bangladesh", "2015"]
+        ].map(([degree, school, year]) => (
+          <div className="edu-card" key={degree}>
+            <div className="edu-icon">
+              <i className="fa fa-graduation-cap"></i>
+            </div>
+            <div>
+              <div className="edu-degree">{degree}</div>
+              <div className="edu-school">{school}</div>
+            </div>
+            <div className="edu-year">{year}</div>
+          </div>
+        ))}
+
+        <div className="skills-section-title">Certifications</div>
+        {[
+          ["CCNA - Routing & Switching", "fa-network-wired"],
+          ["Server Administration & Cloud Management - BITM", "fa-cloud"]
+        ].map(([cert, icon]) => (
+          <div className="edu-card" key={cert}>
+            <div className="edu-icon">
+              <i className={`fa ${icon}`}></i>
+            </div>
+            <div>
+              <div className="edu-degree">{cert}</div>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <section id="contact">
+        <h2 className="sec-title">Get In Touch</h2>
+        <p className="contact-sub">Feel free to reach out for collaborations, opportunities, or just to say hello!</p>
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <div>
+            <div className="form-label">
+              <i className="fa fa-user"></i>Your Name
+            </div>
+            <input
+              className="form-input"
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+              value={form.name}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <div className="form-label">
+              <i className="fa fa-envelope"></i>Email Address
+            </div>
+            <input
+              className="form-input"
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              value={form.email}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <div className="form-label">
+              <i className="fa fa-comment"></i>Your Message
+            </div>
+            <textarea
+              className="form-textarea"
+              name="message"
+              placeholder="Write your message here..."
+              value={form.message}
+              onChange={handleInputChange}
+              required
+            ></textarea>
+          </div>
+          <button className="submit-btn" type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Send Message"}
+          </button>
+          {message.text && (
+            <div className={message.type === "success" ? "success-message" : "error-message"} style={{display: "block"}}>
+              {message.text}
+            </div>
+          )}
+        </form>
+      </section>
+    </React.Fragment>
   );
 }
-ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App));
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
 </body>
 </html>
