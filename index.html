@@ -111,6 +111,7 @@
     .panel-footer{text-align:center;font-size:.75rem;color:var(--muted);padding-top:.8rem;border-top:1px solid var(--border)}
     @media(max-width:700px){.info-grid{grid-template-columns:1fr 1fr}nav{padding:0 1.2rem}section{padding:90px 1.2rem 50px}}
     @media(max-width:450px){.info-grid{grid-template-columns:1fr}.contact-form{padding:1.5rem}.settings-panel{width:260px}}
+    .scroll-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:999;transition:width 0.1s}
   </style>
 </head>
 <body>
@@ -127,6 +128,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({type: "", text: ""});
   const [darkMode, setDarkMode] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [clock, setClock] = useState("");
   const [dateStr, setDateStr] = useState("");
@@ -156,7 +158,14 @@ function App() {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, [settingsOpen]);
-
+  useEffect(() => {
+  const handleScroll = () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    setScrollProgress((window.scrollY / total) * 100);
+  };
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   useEffect(() => {
     document.body.classList.toggle("light-mode", !darkMode);
   }, [darkMode]);
@@ -218,6 +227,7 @@ function App() {
 
   return (
     <React.Fragment>
+      <div className="scroll-bar" style={{width: scrollProgress + "%"}}></div>
       <nav>
         <div className="logo" onClick={() => scrollTo("home")}>
   <img src="/favicon.png" alt="logo" className="logo-img" />
