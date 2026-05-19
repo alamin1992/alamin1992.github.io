@@ -115,6 +115,8 @@
     .back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px var(--glow);transition:all .3s;z-index:300;opacity:0;pointer-events:none}
     .back-top.visible{opacity:1;pointer-events:all}
     .back-top:hover{transform:translateY(-3px);box-shadow:0 8px 20px var(--glow)}
+    .fade-section{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+    .fade-section.visible{opacity:1;transform:translateY(0)}
   </style>
 </head>
 <body>
@@ -290,7 +292,7 @@ function App() {
 <button className={`back-top${showTop ? " visible" : ""}`} onClick={() => window.scrollTo({top:0,behavior:"smooth"})}>
   <i className="fa fa-arrow-up"></i>
 </button>
-      <section id="home">
+      <section id="home" className="fade-section">
         <div className="avatar-ring">
           <div className="avatar-inner">
             <img src={PHOTO} alt="Alamin"/>
@@ -325,7 +327,7 @@ function App() {
         </div>
       </section>
 
-      <section id="about">
+      <section id="about" className="fade-section">
         <h2 className="sec-title">About Me</h2>
         <p className="about-bio">Experienced 2nd Line Support Engineer and QA Specialist with over 8 years of experience supporting international clients and streaming platforms. Expert in incident management, root cause analysis, and ensuring customer satisfaction through efficient problem resolution. Dedicated to continuous improvement and technical excellence.</p>
         <div className="info-section-title">Basic Info</div>
@@ -351,7 +353,7 @@ function App() {
         </div>
       </section>
 
-      <section id="activities">
+      <section id="activities" className="fade-section">
         <h2 className="sec-title">Experience & Skills</h2>
         <div className="exp-block">
           <div className="exp-header">
@@ -443,7 +445,7 @@ function App() {
         ))}
       </section>
 
-      <section id="contact">
+      <section id="contact" className="fade-section">
         <h2 className="sec-title">Get In Touch</h2>
         <p className="contact-sub">Feel free to reach out for collaborations, opportunities, or just to say hello!</p>
         <form className="contact-form" onSubmit={handleSubmit}>
