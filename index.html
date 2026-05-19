@@ -112,6 +112,9 @@
     @media(max-width:700px){.info-grid{grid-template-columns:1fr 1fr}nav{padding:0 1.2rem}section{padding:90px 1.2rem 50px}}
     @media(max-width:450px){.info-grid{grid-template-columns:1fr}.contact-form{padding:1.5rem}.settings-panel{width:260px}}
     .scroll-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:999;transition:width 0.1s}
+    .back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px var(--glow);transition:all .3s;z-index:300;opacity:0;pointer-events:none}
+    .back-top.visible{opacity:1;pointer-events:all}
+    .back-top:hover{transform:translateY(-3px);box-shadow:0 8px 20px var(--glow)}
   </style>
 </head>
 <body>
@@ -131,6 +134,7 @@ function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [clock, setClock] = useState("");
+  const [showTop, setShowTop] = useState(false);
   const [dateStr, setDateStr] = useState("");
 
   useEffect(() => {
@@ -162,6 +166,7 @@ function App() {
   const handleScroll = () => {
     const total = document.documentElement.scrollHeight - window.innerHeight;
     setScrollProgress((window.scrollY / total) * 100);
+    setShowTop(window.scrollY > 400);
   };
   window.addEventListener("scroll", handleScroll);
   return () => window.removeEventListener("scroll", handleScroll);
@@ -282,7 +287,9 @@ function App() {
           </div>
         </div>
       </nav>
-
+<button className={`back-top${showTop ? " visible" : ""}`} onClick={() => window.scrollTo({top:0,behavior:"smooth"})}>
+  <i className="fa fa-arrow-up"></i>
+</button>
       <section id="home">
         <div className="avatar-ring">
           <div className="avatar-inner">
