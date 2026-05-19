@@ -165,6 +165,15 @@ function App() {
     return () => document.removeEventListener("mousedown", handler);
   }, [settingsOpen]);
   useEffect(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add("visible");
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll(".fade-section").forEach(el => observer.observe(el));
+  return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
   const handleScroll = () => {
     const total = document.documentElement.scrollHeight - window.innerHeight;
     setScrollProgress((window.scrollY / total) * 100);
