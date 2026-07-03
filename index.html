@@ -152,9 +152,9 @@ function App() {
   const [dateStr, setDateStr] = useState("");
   const [recIndex, setRecIndex] = useState(0);
   const RECS = [
-  {name: "Subroto Kumar Shill", role: "Manager Broadcast Engineering and ICT, Jamuna Television Ltd", initials: "SK", text: "He consistently impressed with his dedication, quick learning, and attention to detail. His positive attitude and adaptability made him a valuable team member who contributed significantly to various projects. I wish him the best for a bright and successful future."},
-  {name: "Rezaul Karim Khan", role: "Experienced IT & Media Operations Professional", initials: "RK", text: "Reliable Technical Support professional with strong troubleshooting, problem-solving, and analytical skills. Passionate about continuous learning, delivering quality solutions, and adapting to new technologies while contributing effectively to technical teams."},
-  {name: "Abul Kalam Azad", role: "Engineering Operations Strategist | Head of Technical Support", initials: "AK", text: "Having worked with Alamin for several years, I can confidently say he is a reliable and process-driven Technical Support professional. His strengths include enterprise customer support, production troubleshooting, cross-functional collaboration, and delivering high-quality results. Professional, dependable, and easy to work with, he is a valuable addition to any technical team."}
+  {name: "Subroto Kumar Shill", role: "Manager Broadcast Engineering and ICT, Jamuna Television Ltd", initials: "SK",img: "images/SK.jpg", text: "He consistently impressed with his dedication, quick learning, and attention to detail. His positive attitude and adaptability made him a valuable team member who contributed significantly to various projects. I wish him the best for a bright and successful future."},
+  {name: "Rezaul Karim Khan", role: "Experienced IT & Media Operations Professional", initials: "RK",img: "images/RK.jpg", text: "Reliable Technical Support professional with strong troubleshooting, problem-solving, and analytical skills. Passionate about continuous learning, delivering quality solutions, and adapting to new technologies while contributing effectively to technical teams."},
+  {name: "Abul Kalam Azad", role: "Engineering Operations Strategist | Head of Technical Support", initials: "AK", img: "images/AK.jpg", text: "Having worked with Alamin for several years, I can confidently say he is a reliable and process-driven Technical Support professional. His strengths include enterprise customer support, production troubleshooting, cross-functional collaboration, and delivering high-quality results. Professional, dependable, and easy to work with, he is a valuable addition to any technical team."}
 ];
 
   useEffect(() => {
@@ -482,7 +482,10 @@ function App() {
         <div className="rec-section">
   <div className="rec-title">Recommendations</div>
   <div className="rec-card">
-    <div className="rec-avatar-placeholder">{RECS[recIndex].initials}</div>
+    {RECS[recIndex].img
+  ? <img src={RECS[recIndex].img} alt={RECS[recIndex].name} className="rec-avatar" />
+  : <div className="rec-avatar-placeholder">{RECS[recIndex].initials}</div>
+}
     <div className="rec-name">{RECS[recIndex].name}</div>
     <div className="rec-role">{RECS[recIndex].role}</div>
     <div className="rec-quote-icon">❝</div>
